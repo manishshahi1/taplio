@@ -1,0 +1,28 @@
+RewriteEngine On
+
+# Rewrite requests for CSS files to the app folder
+RewriteRule ^assets/css/pages/(.*)$ app/assets/css/pages/$1 [L]
+RewriteRule ^assets/css/(.*)$ app/assets/css/$1 [L]
+
+# Rewrite requests for JavaScript files to the app folder
+RewriteRule ^assets/js/pages/(.*)$ app/assets/js/pages/$1 [L]
+RewriteRule ^assets/js/(.*)$ app/assets/js/$1 [L]
+
+# Rewrite requests for image files to the app folder
+RewriteRule ^assets/img/(.*)$ app/assets/img/$1 [L]
+RewriteRule ^assets/images/(.*)$ app/assets/images/$1 [L]
+RewriteRule ^assets/media/(.*)$ app/assets/media/$1 [L]
+RewriteRule ^assets/plugins/(.*)$ app/assets/plugins/$1 [L]
+RewriteRule ^assets/webpack/(.*)$ app/assets/webpack/$1 [L]
+
+# Rewrite requests for plugins folder
+RewriteRule ^assets/plugins/(.*)$ app/assets/plugins/$1 [L]
+RewriteRule ^assets/third_party/(.*)$ app/assets/third_party/$1 [L]
+
+# Rewrite requests for api folder
+RewriteRule ^sec_api/v1/(.*)$ app/sec_api/v1/$1 [L]
+
+# Rewrite requests to index.php if the file or directory does not exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?path=$1 [L,QSA]
